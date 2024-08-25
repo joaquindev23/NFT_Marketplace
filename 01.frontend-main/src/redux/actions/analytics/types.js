@@ -1,0 +1,2 @@
+export const SET_TIME_ON_PAGE = 'SET_TIME_ON_PAGE';
+export const RESET_TIME_ON_PAGE = 'RESET_TIME_ON_PAGE';

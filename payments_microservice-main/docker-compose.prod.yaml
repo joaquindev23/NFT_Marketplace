@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # Django app
+  backend_payments:
+    container_name: boomslag_ms_payments
+    build: .
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8015"
+    volumes:
+      - .:/app
+    ports:
+      - 8015:8015
+  # Event Queue Kafka
+  queue_payments:
+    build: .
+    command: >
+      sh -c "python consumer.py"

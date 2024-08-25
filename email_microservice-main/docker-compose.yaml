@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # Django app
+  backend_email:
+    container_name: boomslag_ms_email
+    build: .
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8001"
+    volumes:
+      - .:/app
+    ports:
+      - 8001:8001
+  # Event Queue Kafka
+  queue_email:
+    build: .
+    command: >
+      sh -c "python consumer.py"

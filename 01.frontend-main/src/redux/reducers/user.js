@@ -1,0 +1,41 @@
+import {
+  EDIT_USERNAME_SUCCESS,
+  EDIT_USERNAME_FAIL,
+  EDIT_FIRST_NAME_SUCCESS,
+  EDIT_FIRST_NAME_FAIL,
+  EDIT_LAST_NAME_SUCCESS,
+  EDIT_LAST_NAME_FAIL,
+  EDIT_LOCATION_SUCCESS,
+  EDIT_LOCATION_FAIL,
+  EDIT_URL_SUCCESS,
+  EDIT_URL_FAIL,
+  EDIT_BIRTHDAY_SUCCESS,
+  EDIT_BIRTHDAY_FAIL,
+  EDIT_BIO_SUCCESS,
+  EDIT_BIO_FAIL,
+  EDIT_FACEBOOK_SUCCESS,
+  EDIT_FACEBOOK_FAIL,
+  EDIT_TWITTER_SUCCESS,
+  EDIT_TWITTER_FAIL,
+  EDIT_INSTAGRAM_SUCCESS,
+  EDIT_INSTAGRAM_FAIL,
+  EDIT_YOUTUBE_SUCCESS,
+  EDIT_YOUTUBE_FAIL,
+  EDIT_LINKEDIN_SUCCESS,
+  EDIT_LINKEDIN_FAIL,
+  EDIT_GITHUB_SUCCESS,
+  EDIT_GITHUB_FAIL,
+} from '../actions/user/types';
+
+const initialState = {};
+
+const userReducer = (state = initialState, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    default:
+      return state;
+  }
+};
+
+export default userReducer;

@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  # Django app
+  backend_coupons:
+    container_name: boomslag_ms_coupons
+    build: .
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8017"
+    volumes:
+      - .:/app
+    ports:
+      - 8017:8017
+    depends_on:
+      - db_coupons
+      - redis
+  # Event Queue Kafka
+  queue_coupons:
+    build: .
+    command: >
+      sh -c "python consumer.py"
+    depends_on:
+      - db_coupons
+  # Database (PostgreSQL)
+  db_coupons:
+    image: postgres
+    container_name: django_coupons_api_postgresql
+    restart: always
+    environment:
+      POSTGRES_DB: boomslag_coupons_db
+      POSTGRES_USER: boomslag
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5449:5432
+    volumes:
+      - .dbdata:/var/lib/postgresql
+  # Redis Cache
+  redis:
+    image: redis
+    container_name: django_coupons_api_redis
+    ports:
+      - 6346:6379
